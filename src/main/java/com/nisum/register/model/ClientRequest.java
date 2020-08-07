@@ -1,11 +1,16 @@
 package com.nisum.register.model;
 
+import javax.validation.constraints.Pattern;
 import java.util.List;
-
 
 public class ClientRequest {
     private String name;
+    
+    @Pattern(regexp = ".+@.+\\..+", message = "Format email is invalid, should be similar to aaaaaaa@dominio.cl")
     private String email;
+
+    @Pattern(regexp = "((?=.*[a-z])(?=.*d)(?=.*[A-Z]).{6,10})", message = "Password inserted does not compliment " +
+            " with the standard rules")
     private String password;
     private List<PhoneRequest> phoneRequests;
 
